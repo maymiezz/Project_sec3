@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: latin1 -*-
+#input=raw_input
+input=raw_input
 import pygal
 """" """
 def pie(p, year):
