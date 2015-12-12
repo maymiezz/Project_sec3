@@ -1,7 +1,7 @@
 import pygal
-""" """
+"""Data of population income"""
 def line_chart(part, year):
-    """ """
+    """Data of population income_2550_Northeastern"""
     dic = {
         'ภาคกลาง': {
             'ฉะเชิงเทรา': {
