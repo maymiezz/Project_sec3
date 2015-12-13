@@ -1,7 +1,7 @@
 import pygal
 """Data of population income"""
-def s_2549():
-    """Data of population income in 2549_S """
+def ne_2549():
+    """Data of population income in 2549_C """
     dic = {
         'ภาคกลาง': {
             'ฉะเชิงเทรา': {
@@ -553,20 +553,20 @@ def s_2549():
     }
     height_ = 1000
     width_ = 1000
-    html_f_name = '2549_s.html'
-    svg_f_name= '2549_s.svg'
+    html_f_name = '2549_ne.html'
+    svg_f_name= '2549_ne.svg'
     line_chart = pygal.HorizontalBar(height=height_, width=width_)
-    line_chart.title = 'สถิติรายได้ของประชากรภาคใต้ในปี 2549'
-    for i in dic['ภาคใต้']:
-        line_chart.add(i, dic['ภาคใต้'][i][2549])
+    line_chart.title = 'สถิติรายได้ของประชากรภาคตะวันออกเฉียงเหนือในปี 2549'
+    for i in dic['ภาคตะวันออกเฉียงเหนือ']:
+        line_chart.add(i, dic['ภาคตะวันออกเฉียงเหนือ'][i][2549])
 
     html = ("""
     <iframe style="width: 100%%; height: %dpx;" src="/graphs/%s">Error !? iFrame not support in your browser.</iframe>
     """ % (height_, svg_f_name))
-    
+
     output_file = open(html_f_name, 'w')
     output_file.write(html)
     output_file.close()
 
     line_chart.render_to_file(svg_f_name)
-s_2549()
+ne_2549()

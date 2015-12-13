@@ -1,7 +1,7 @@
 import pygal
-""" """
-def line_chart(part, year):
-    """ """
+"""show chart of income in 2550"""
+def line_chart():
+    """make chart from data in 2550"""
     dic = {
         'ภาคกลาง': {
             'ฉะเชิงเทรา': {
@@ -551,13 +551,23 @@ def line_chart(part, year):
             }
         }
     }
-    line_chart = pygal.HorizontalBar()
-    line_chart.title = 'สถิติรายได้ของประชากร %s ในปี %d' % (part, year)
-    for i in dic[part]:
-                line_chart.add(i, dic[part][i][year])
+    height_ = 1000
+    width_ = 1000
+    html_f_name = '2550_N.html'
+    svg_f_name= '2550_N.svg'
+    line_chart = pygal.HorizontalBar(height=height_, width=width_)
+    line_chart.title = 'สถิติรายได้ของประชากรภาคเหนือในปี 2550'
+    for i in dic['ภาคเหนือ']:
+                line_chart.add(i, dic['ภาคเหนือ'][i][2550])
 
-    output_file = open('2550_N.html', 'w')
-    output_file.write(line_chart.render_data_uri())
+    html = ("""
+    <iframe style="width: 100%%; height: %dpx;" src="/graphs/%s">Error !? iFrame not support in your browser.</iframe>
+    """ % (height_, svg_f_name))
+    
+    output_file = open(html_f_name, 'w')
+    output_file.write(html)
     output_file.close()
-line_chart('ภาคเหนือ', 2550)
+
+    line_chart.render_to_file(svg_f_name)
+line_chart()
 

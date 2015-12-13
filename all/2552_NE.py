@@ -1,7 +1,7 @@
 import pygal
-"""Data of population income"""
-def ne_2549():
-    """Data of population income in 2549_C """
+"""show graph of income of thai population in 2552"""
+def neast_2552():
+    """show graph that use data from dic in 2552"""
     dic = {
         'ภาคกลาง': {
             'ฉะเชิงเทรา': {
@@ -551,12 +551,22 @@ def ne_2549():
             }
         }
     }
-    line_chart = pygal.HorizontalBar()
-    line_chart.title = 'สถิติรายได้ของประชากรภาคตะวันออกเฉียงเหนือในปี 2549'
+    height_ = 1000
+    width_ = 1000
+    html_f_name = '2552_NE.html'
+    svg_f_name= '2552_NE.svg'
+    line_chart = pygal.HorizontalBar(height=height_, width=width_)
+    line_chart.title = 'สถิติรายได้ของประชากรภาคตะวันออกเฉียงเหนือในปี 2552'
     for i in dic['ภาคตะวันออกเฉียงเหนือ']:
-        line_chart.add(i, dic['ภาคตะวันออกเฉียงเหนือ'][i][2549])
+        line_chart.add(i, dic['ภาคตะวันออกเฉียงเหนือ'][i][2552])
 
-    output_file = open('2549_ne.html', 'w')
-    output_file.write(line_chart.render_data_uri())
+    html = ("""
+    <iframe style="width: 100%%; height: %dpx;" src="/graphs/%s">Error !? iFrame not support in your browser.</iframe>
+    """ % (height_, svg_f_name))
+    
+    output_file = open(html_f_name, 'w')
+    output_file.write(html)
     output_file.close()
-ne_2549()
+
+    line_chart.render_to_file(svg_f_name)
+neast_2552()
